@@ -230,7 +230,7 @@ def browser_extract(url: str) -> list[Item]:
 
             # A small scroll often triggers lazy-loaded result lists.
             page.mouse.wheel(0, 1200)
-            page.wait_for_timeout(1000)
+            page.goto(url, wait_until="commit", timeout=120_000)
 
             html = page.content()
             if DEBUG_ALWAYS:
