@@ -67,7 +67,7 @@ def env(name: str, default: str | None = None) -> str | None:
     return value if value else default
 
 
-TARGET_URL = env(https://lib.cu.ac.kr/newarrival?st=SUBJ&bk_2=jttjb00culibjttj&sNo=0&newDate=60&sq=&oi=&os=DESC&cpp=100")
+TARGET_URL = "https://lib.cu.ac.kr/newarrival?st=SUBJ&bk_2=jttjb00culibjttj&sNo=0&newDate=60&sq=&oi=&os=DESC&cpp=100"
 INCLUDE_TEXT = env("INCLUDE_TEXT")
 DETAIL_LINK_SELECTOR = env("DETAIL_LINK_SELECTOR", "a[href*='/search/detail/']")
 STATE_FILE = Path(env("STATE_FILE", str(DEFAULT_STATE_FILE))).resolve()
