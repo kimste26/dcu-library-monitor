@@ -87,7 +87,7 @@ USER_AGENT = env(
 
 # Notification settings
 NTFY_SERVER = env("NTFY_SERVER", "https://ntfy.sh")
-NTFY_TOPIC = env("NTFY_TOPIC")
+NTFY_TOPIC = "dculibrary"
 
 SMTP_HOST = env("SMTP_HOST")
 SMTP_PORT = int(env("SMTP_PORT", "465"))
