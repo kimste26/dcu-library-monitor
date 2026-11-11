@@ -149,15 +149,18 @@ python dcu_theolib_monitor.py
 
 1. 브라우저에서 `TARGET_URL` 이 로그인 없이 열리는지 확인
 2. 해당 페이지에 실제로 신착자료 목록이 보이는지 확인
-3. `debug/last_page.png` 에 목록이 찍혔는지 확인
-4. 실패한 GitHub Actions 실행에서 `dcu-theolib-debug` 아티팩트를 내려받아 `last_page.png`, `last_page.html`, `last_items.json` 을 확인
-5. 알림 채널(`NTFY_TOPIC` 또는 SMTP/Telegram) 값이 맞는지 확인
+3. **학내망 방화벽(해외 IP 차단) 확인**: 대구가톨릭대 도서관 서버(`lib.cu.ac.kr`, `203.250.62.197`)는 학내망 방화벽 정책상 해외 클라우드 데이터센터(GitHub Actions 등) IP를 차단하여 접속 시간 초과(`Timeout 60s exceeded`)가 발생할 수 있습니다. 이 경우:
+   - 국내 IP의 프록시 서버를 `PROXY_SERVER` Secret에 등록하거나,
+   - 국내 서버 또는 맥북 로컬 환경에서 `cron`이나 상주 스케줄러로 구동하는 것을 권장합니다.
+4. `debug/last_page.png` 에 목록이 찍혔는지 확인
+5. 실패한 GitHub Actions 실행에서 `dcu-theolib-debug` 아티팩트를 내려받아 `last_page.png`, `last_page.html`, `last_items.json` 을 확인
+6. 알림 채널(`NTFY_TOPIC` 또는 SMTP/Telegram) 값이 맞는지 확인
 
 ---
 
 ## 권장 세팅
 
-- 가장 간단: `GitHub Actions + ntfy`
+- 가장 간단: `GitHub Actions + ntfy` (해외망 차단 시 `PROXY_SERVER` 설정 필요)
+- 로컬/맥북 상주: `cron + Telegram (@serinsbot)`
 - 메일이 꼭 필요: `GitHub Actions + SMTP 이메일`
-- 텔레그램 사용 중이면: `GitHub Actions + Telegram`
 
